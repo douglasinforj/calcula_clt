@@ -108,5 +108,19 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     <p><strong>IRRF</strong>R$ ${irrf.toFixed(2)}</p>
     <p><strong>Total a Receber:</strong> R$ ${total.toFixed(2)}</p>
     `
+    // mostrar botão de impressão aoós calculos
+    document.getElementById("imprimir-btn").style.display = "inline"
 
+    //Função para imprimir relatório
+    document.getElementById("imprimir-btn").addEventListener("click", function (){
+        const resultadoDiv = document.getElementById("resultado").innerHTML;
+        const janelaImpressao = window.open('', '', 'height=600, width=800');
+        janelaImpressao.document.write('<html><head><title>Relatório de Rescisão</title>');
+        janelaImpressao.document.write('</head><body>');
+        janelaImpressao.document.write('<h1>Relatório de Rescisão Trabalhista</h1>');
+        janelaImpressao.document.write(resultadoDiv);
+        janelaImpressao.document.write('<button onclick="window.print()">Imprimir</button>');
+        janelaImpressao.document.write('</body></html>');
+        janelaImpressao.document.close();
+    })
 })
