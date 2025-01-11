@@ -56,7 +56,11 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     const inss = calcularINSS(salario);
 
     //total
-    const total = avisoPrevio + multaFGTS + feriasVencidas + feriasProporcionais + decimoProporcional;
+    const total = avisoPrevio + multaFGTS + 
+    feriasVencidas + 
+    feriasProporcionais + 
+    decimoProporcional - 
+    inss;
 
 
     const resultadoDiv = document.getElementById("resultado");
