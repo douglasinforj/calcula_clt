@@ -49,18 +49,38 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
         return inss;
     }
 
+    //Calcular IRRF
+    function calcularIRRF(salario) {
+        let irrf = 0;
+
+        if (salario <= 2259.20) {
+            irrf = 0;
+        }else if (salario <= 2826.65){
+            irrf = salario * 0.075 - 169.44
+        }else if(salario <= 3751.05){
+            irrf = salario * 0.15 - 381.44
+        }else if(salario <= 4664.68){
+            irrf = salario * 0.225 - 662.77
+        } else{
+            irrf = salario * 0.227 - 896.00      //Salario acima de 4664.68
+        }
+        return Math.max(0, irrf);  //garantindo que não seja negativo
+    }
+
 
 
 
     //Calculo Descontos
     const inss = calcularINSS(salario);
+    const irrf = calcularIRRF(salario);
 
     //total
     const total = avisoPrevio + multaFGTS + 
     feriasVencidas + 
     feriasProporcionais + 
     decimoProporcional - 
-    inss;
+    inss -
+    irrf;
 
 
     const resultadoDiv = document.getElementById("resultado");
@@ -71,6 +91,7 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     <p><strong>Ferias Proporcionais:<strong>R$ ${feriasProporcionais.toFixed(2)}</p>
     <p><strong>13º Proporcional:</strong> R$ ${decimoProporcional.toFixed(2)}</p>
     <p><strong>INSS</strong>R$ ${inss.toFixed(2)} </p>
+    <p><strong>IRRF</strong>R$ ${irrf.toFixed(2)}</p>
     <p><strong>Total a Receber:</strong> R$ ${total.toFixed(2)}</p>
     `
 
