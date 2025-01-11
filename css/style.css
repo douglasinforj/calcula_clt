@@ -49,6 +49,7 @@ button:hover{
     border: 1px solid #ccc;
     border-radius: 5px;
     background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /*Explicações Legais*/
@@ -60,6 +61,21 @@ button:hover{
 }
 .explicacao h2 {
     margin-bottom: 10px;
+}
+
+/*Estilizando o relatório*/
+
+#imprimir-btn {
+    margin-top: 20px;
+    padding: 10px, 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#imprimir-btn:hover{
+    background-color: #0056b3;
 }
 
 
