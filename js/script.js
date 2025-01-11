@@ -111,7 +111,7 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     // mostrar botão de impressão aoós calculos
     document.getElementById("imprimir-btn").style.display = "inline"
 
-    //Função para imprimir relatório
+    /*Função para imprimir relatório
     document.getElementById("imprimir-btn").addEventListener("click", function (){
         const resultadoDiv = document.getElementById("resultado").innerHTML;
         const janelaImpressao = window.open('', '', 'height=600, width=800');
@@ -122,5 +122,75 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
         janelaImpressao.document.write('<button onclick="window.print()">Imprimir</button>');
         janelaImpressao.document.write('</body></html>');
         janelaImpressao.document.close();
-    })
+    }) */
+
+    
+    //Função para imprimir relatório como estilização css
+    document.getElementById("imprimir-btn").addEventListener("click", function () {
+        const resultadoDiv = document.getElementById("resultado").innerHTML;
+        const janelaImpressao = window.open('', '', 'height=600,width=800');
+        
+        janelaImpressao.document.write(`
+          <html>
+            <head>
+              <title>Relatório de Rescisão</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 20px;
+                  line-height: 1.6;
+                  color: #333;
+                }
+                h1 {
+                  text-align: center;
+                  color: #007BFF;
+                }
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin: 20px 0;
+                }
+                th, td {
+                  border: 1px solid #ddd;
+                  padding: 10px;
+                  text-align: left;
+                }
+                th {
+                  background-color: #f4f4f4;
+                  font-weight: bold;
+                }
+                tr:nth-child(even) {
+                  background-color: #f9f9f9;
+                }
+                tr:hover {
+                  background-color: #f1f1f1;
+                }
+                button {
+                  display: block;
+                  margin: 20px auto;
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  background-color: #007BFF;
+                  color: #fff;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+                button:hover {
+                  background-color: #0056b3;
+                }
+              </style>
+            </head>
+            <body>
+              <h1>Relatório de Rescisão Trabalhista</h1>
+              ${resultadoDiv}
+              <button onclick="window.print()">Imprimir</button>
+            </body>
+          </html>
+        `);
+        
+        janelaImpressao.document.close();
+      });
+
+
 })
