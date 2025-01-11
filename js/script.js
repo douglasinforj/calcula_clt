@@ -20,11 +20,24 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
         multaFGTS = saldoFGTS * 0.4;
     }
 
+    // Calcular as ferias proporcionais
+    feriasProporcionais = (salario / 12) * tempo;
+
+    //Calcular 13º salário proporcional
+    decimoProporcional = (salario / 12) * tempo;
+
+    //total
+    const total = avisoPrevio + multaFGTS + feriasVencidas + feriasProporcionais + decimoProporcional;
+
 
     const resultadoDiv = document.getElementById("resultado");
     resultadoDiv.innerHTML = ` 
     <h2>Resultado</h2>
-    <p><strong>Aviso Prévio:</strong>R$ ${avisoPrevio.toFixed(2)}</p>
+    <p><strong>Aviso Prévio:</strong>R$: ${avisoPrevio.toFixed(2)}</p>
+    <p><strong>Multa:</strong>R$ ${multaFGTS.toFixed(2)}
+    <p><strong>Ferias Proporcionais:<strong>R$ ${feriasProporcionais.toFixed(2)}</p>
+    <p><strong>13º Proporcional:</strong> R$ ${decimoProporcional.toFixed(2)}</p>
+    <p><strong>Total a Receber:</strong> R$ ${total.toFixed(2)}</p>
     `
 
 })
