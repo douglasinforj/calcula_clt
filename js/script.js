@@ -8,6 +8,20 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     const feriasVencidas = parseInt(document.getElementById("ferias").value) || 0;
     const saldoFGTS = parseFloat(document.getElementById("fgts").value) || 0;
 
+    //Validando campos
+
+    if (isNaN(salario) || salario <= 0){
+        alert("Por favor, insira um salário válido")
+    }
+
+    if (isNaN(tempo) || salario <= 0){
+        alert("Por favor, insira o tempo de trabalho válido")
+    }
+
+
+
+
+
     //temas para calculo
     let avisoPrevio = 0;
     let multaFGTS =0;
