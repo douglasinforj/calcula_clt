@@ -14,7 +14,17 @@ document.getElementById("calculo-form").addEventListener("submit", function (e){
     let feriasProporcionais = 0;
     let decimoProporcional = 0;
 
+    //Calculando aviso prévio e multa de fgts se aplicavel
+    if (tipoDesligamento === "sem-justa-causa"){
+        avisoPrevio = salario;
+        multaFGTS = saldoFGTS * 0.4;
+    }
 
 
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = ` 
+    <h2>Resultado</h2>
+    <p><strong>Aviso Prévio:</strong>R$ ${avisoPrevio.toFixed(2)}</p>
+    `
 
 })
